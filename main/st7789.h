@@ -66,7 +66,7 @@ class ST7789 {
     int dcPin;
     int rstPin;
     uint16_t* canvas = nullptr; 
-    uint16_t* lines [QUEUE_DEPTH];
+    uint16_t* lines [QUEUE_DEPTH]={nullptr};
     void sendCommand(uint8_t command);
     void sendData(uint8_t data);
     void sendDataArray(uint8_t* array, int len);
