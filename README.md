@@ -8,7 +8,7 @@ This is a personal/hobby project — not a production-hardened library. It works
 
 - **Mutex-guarded canvas access:** All drawing operations (`drawPixel`, `drawLine`, `fillTriangle`, `print`, etc.) are serialized via a `std::recursive_mutex`, so multiple FreeRTOS tasks can safely call them without corrupting the shared framebuffer. Note: the lock is coarse-grained — `Render()` holds it for the entire duration of the SPI/DMA flush, so no other task can draw while a frame is being sent out. This protects data integrity; it does not give you lock-free parallel rendering.
 - **Chunked DMA transfer:** `Render()` slices the framebuffer into `DMA_LINES`-sized chunks and queues them to the SPI peripheral via `spi_device_queue_trans`, using a small ring of pre-allocated DMA buffers (`QUEUE_DEPTH`) so the CPU doesn't block on each individual transaction while the previous ones are still in flight.
-- **3D wireframe & rasterization helpers:** Basic 3D projection, filled-triangle rasterization, and Painter's-algorithm depth sorting, layered directly on top of the 2D primitives.
+- **3D wireframe & rasterization helpers:** Basic 3D projection, filled-triangle rasterization
 - **Embedded 8x16 bitmap font** with adjustable pixel scaling.
 
 ## How It Works
