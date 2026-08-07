@@ -22,11 +22,6 @@
 #define ST7789_RAMWR    0x2C
 #define ST7789_MADCTL   0x36
 #define ST7789_COLMOD   0x3A
-#define COLOR_BLACK   0x0000
-#define COLOR_RED     0xF800
-#define COLOR_GREEN   0x07E0
-#define COLOR_BLUE    0x001F
-#define COLOR_WHITE   0xFFFF
 #define BLACK       0x0000
 #define WHITE       0xFFFF
 #define RED         0xF800
@@ -36,6 +31,13 @@
 #define CYAN        0x07FF
 #define MAGENTA     0xF81F
 #define GRAY        0x7BEF
+#define ORANGE      0xFDA0
+#define PURPLE      0x8010
+#define LIME        0x07E0  
+#define TEAL        0x0410  
+#define DARK_RED    0x8000
+#define DARK_GREEN  0x0400
+#define DARK_BLUE   0x0010
 #define DMA_LINES 20
 static const char* display = "ST7789_DRIVER";
 const int QUEUE_DEPTH = 2;
@@ -44,18 +46,6 @@ struct Point
     int x;
     int y;
 };
-
-// Пастельные тона:
-#define PINK        0xF81F  // Светло-розовый
-#define ORANGE      0xFDA0  // Оранжевый
-#define PURPLE      0x8010  // Фиолетовый
-#define LIME        0x07E0  // Лайм
-#define TEAL        0x0410  // Бирюзовый
-
-// Темные оттенки:
-#define DARK_RED    0x8000
-#define DARK_GREEN  0x0400
-#define DARK_BLUE   0x0010
 
 class ST7789 {
     private:
